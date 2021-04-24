@@ -16,17 +16,17 @@ type MealProps = {
 const MealItem = (props: MealProps) => (
   <>
     <Grid container spacing={2} alignItems='center'>
-      <Grid item xs={8}>
+      <Grid item xs={6}>
         <ItemCost
           itemName={props.name}
           cost={props.price}
           addDivider={props.addDivider}
         />
       </Grid>
-      <Grid item xs={2}>
+      <Grid item xs>
         <EditMealPanel id={props.id} />
       </Grid>
-      <Grid item xs={2}>
+      <Grid item xs>
         <DeleteMealButton id={props.id} />
       </Grid>
       {props.addDivider && (
