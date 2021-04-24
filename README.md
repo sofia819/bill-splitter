@@ -1,8 +1,68 @@
-# Getting Started with Create React App
+# Bill Splitter
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Background
+
+---
+
+### What is it?
+
+- This is a React app that calculates how much each person should pay when splitting a bill.
+  - According to what each person ordered and consumed, the app will calculate a portion of the bill everyone should pay.
+- Users can input people's names, meals ordered, tips percentage, and tax.
+
+- This is based on a rough version that I wrote back in Sept 2020.
+  - Link to the [old version](https://github.com/sofia819/bill-splitter-old)
+
+### Why did you write this app?
+
+- Every time I go out with my friends, we always spend a lot of time remembering what we each ordered and shared and attempt to calculate how much each person should pay.
+- I created this app because I hope to lessen the time we spend on that process.
+- I also wanted to take the chance to learn how to use TypeScript and React Context.
+
+## How do I use it?
+
+---
+
+- The app is available here: https://bill-price-splitter.herokuapp.com/.
+
+### Adding People
+
+- Click on the `Add User` button and a modal will open, allowing the user to input information for a user.
+- The user must enter a name to add a new user.
+
+### Adding Meals
+
+- Click on the `Add Meal` button and a modal will open, allowing the user to input information for a meal.
+- The user must enter a name, a price, and select at least one user who has consumed the meal.
+- You must have at least one user in the user list to add a meal.
+
+### Editing Meals
+
+- Click on the `Edit` button next to the meal that you would like to edit.
+- The user must enter a name, a price, and select at least one user who has consumed the meal.
+
+### Removing Meals
+
+- Click on the `Del` button next to the meal that you would like to remove.
+
+### Adding Tax and Tips
+
+- Click on `Edit Tax & Tips` to input the tip percentage and tax included in the bill.
+
+### Viewing Results
+
+- After you have input all the information from your bill, scroll to the bottom and view the results!
+
+## Notes
+
+---
+
+- This is a work in progress and bugs will exist.
+- As I use the app more, I will try to improve the app and fix the bugs.
 
 ## Available Scripts
+
+---
 
 In the project directory, you can run:
 
@@ -13,34 +73,3 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
