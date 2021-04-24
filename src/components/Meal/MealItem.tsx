@@ -17,11 +17,7 @@ const MealItem = (props: MealProps) => (
   <>
     <Grid container spacing={2} alignItems='center'>
       <Grid item xs={6}>
-        <ItemCost
-          itemName={props.name}
-          cost={props.price}
-          addDivider={props.addDivider}
-        />
+        <ItemCost itemName={props.name} cost={props.price} addDivider={false} />
       </Grid>
       <Grid item xs>
         <EditMealPanel id={props.id} />
