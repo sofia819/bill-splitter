@@ -23,7 +23,6 @@ const FeesItem = (props: FeesProps) => {
       )}
     </Grid>
   );
-  // return <Typography>{`${props.title}: ${props.value}`}</Typography>;
 };
 
 export default FeesItem;

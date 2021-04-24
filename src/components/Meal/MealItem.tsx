@@ -1,6 +1,9 @@
 import { User } from '../../context/BillDataContext';
 import EditMealPanel from './EditMealPanel';
+import { Divider } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
 import ItemCost from '../shared/ItemCost';
+import DeleteMealButton from './DeleteMealButton';
 
 type MealProps = {
   id: number;
@@ -12,12 +15,27 @@ type MealProps = {
 
 const MealItem = (props: MealProps) => (
   <>
-    <ItemCost
-      itemName={props.name}
-      cost={props.price}
-      addDivider={props.addDivider}
-    />
-    <EditMealPanel />
+    <Grid container spacing={2} alignItems='center'>
+      <Grid item xs={8}>
+        <ItemCost
+          itemName={props.name}
+          cost={props.price}
+          addDivider={props.addDivider}
+        />
+      </Grid>
+      <Grid item xs={2}>
+        <EditMealPanel id={props.id} />
+      </Grid>
+      <Grid item xs={2}>
+        <DeleteMealButton id={props.id} />
+      </Grid>
+      {props.addDivider && (
+        <Grid item xs={12}>
+          <Divider />
+        </Grid>
+      )}
+    </Grid>
+    {props.addDivider && <Divider />}
   </>
 );
 

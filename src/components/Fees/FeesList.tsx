@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import { BillDataContext } from '../../context/BillDataContext';
-import { Divider } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import FeesItem from './FeesItem';
 import { TAX, TIPS, NO_VALUE } from '../shared/constants';
