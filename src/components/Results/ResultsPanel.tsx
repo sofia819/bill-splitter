@@ -1,5 +1,10 @@
 import { useContext } from 'react';
 import { BillDataContext } from '../../context/BillDataContext';
+import UserCostList from './UserCostList';
+import { RESULTS } from '../shared/constants';
+import CostList from './CostList';
+import PanelHeader from '../shared/PanelHeader';
+import { roundNumber } from '../shared/utils';
 
 const Results = () => {
   const { users, meals, tipPercent, tax } = useContext(BillDataContext);
@@ -10,10 +15,10 @@ const Results = () => {
     (subtotal, currentMeal) => subtotal + currentMeal.price,
     0
   );
-  const tips: number = (subtotal * tipPercent) / 100;
-  const tipsPerUser: number = tips / users.length;
-  const taxPerUser: number = tax / users.length;
-  const total: number = subtotal + tips + tax;
+  const tips: number = roundNumber((subtotal * tipPercent) / 100);
+  const tipsPerUser: number = roundNumber(tips / users.length);
+  const taxPerUser: number = roundNumber(tax / users.length);
+  const totalCost: number = roundNumber(subtotal + tips + tax);
   const userCosts: number[] = [];
 
   users.forEach((user) => {
@@ -22,28 +27,30 @@ const Results = () => {
     );
     const userSubtotal = userMeals.reduce(
       (userSubtotal, currentMeal) =>
-        userSubtotal + currentMeal.price / currentMeal.users.length,
+        roundNumber(
+          userSubtotal + currentMeal.price / currentMeal.users.length
+        ),
       0
     );
-    userCosts.push(userSubtotal + tipsPerUser + taxPerUser);
+    userCosts.push(roundNumber(userSubtotal + tipsPerUser + taxPerUser));
   });
+
+  const totalUserCost = userCosts.reduce(
+    (totalCost, currentCost) => roundNumber(totalCost + currentCost),
+    0
+  );
 
   return (
     <>
-      {
-        // UserCostItem component
-        userCosts.map((userCost, index) => (
-          <div key={index}>{`${users[index].name}: $${userCost}`}</div>
-        ))
-      }
-      <div>{`Subtotal: ${subtotal}`}</div>
-      <div>{`Tips: ${tips}`}</div>
-      <div>{`Tax: ${tax}`}</div>
-      <div>{`Total from user costs: ${userCosts.reduce(
-        (totalCost, currentCost) => totalCost + currentCost,
-        0
-      )}`}</div>
-      <div>{`Total: ${total}`}</div>
+      <PanelHeader title={RESULTS} />
+      <UserCostList userCosts={userCosts} />
+      <CostList
+        subtotal={subtotal}
+        tips={tips}
+        tax={tax}
+        totalUserCost={totalUserCost}
+        totalCost={totalCost}
+      />
     </>
   );
 };

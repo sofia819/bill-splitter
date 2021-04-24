@@ -7,11 +7,11 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Grid from '@material-ui/core/Grid';
 import {
-  ADD_FEES_TEXT,
+  EDIT_FEES_TEXT,
   SAVE,
   CANCEL,
   TAX,
-  TIP_PERCENT,
+  TIPS_PERCENT,
 } from '../shared/constants';
 
 const AddFeesPanel = () => {
@@ -39,14 +39,14 @@ const AddFeesPanel = () => {
     setTaxInput(e.target.value);
 
   const isTipPercentInputInvalid =
-    tipPercentInput === '' || isNaN(parseInt(tipPercentInput));
+    tipPercentInput === '' || isNaN(parseFloat(tipPercentInput));
 
-  const isTaxInputInvalid = taxInput === '' || isNaN(parseInt(taxInput));
+  const isTaxInputInvalid = taxInput === '' || isNaN(parseFloat(taxInput));
 
   const handleSave = () => {
     if (!isTipPercentInputInvalid && !isTaxInputInvalid) {
-      setTipPercent(parseInt(tipPercentInput));
-      setTax(parseInt(taxInput));
+      setTipPercent(parseFloat(tipPercentInput));
+      setTax(parseFloat(taxInput));
       handleClosePanel();
     }
   };
@@ -54,23 +54,23 @@ const AddFeesPanel = () => {
   return (
     <>
       <Button variant='contained' color='primary' onClick={handleOpenPanel}>
-        {ADD_FEES_TEXT}
+        {EDIT_FEES_TEXT}
       </Button>
       <Dialog
-        aria-labelledby={ADD_FEES_TEXT}
+        aria-labelledby={EDIT_FEES_TEXT}
         open={isAddPanelOpen}
         onClose={handleClosePanel}
       >
-        <DialogTitle>{ADD_FEES_TEXT}</DialogTitle>
+        <DialogTitle>{EDIT_FEES_TEXT}</DialogTitle>
         <DialogContent>
           <Box>
             <Grid container spacing={2}>
               <Grid item xs={4}>
-                <Typography>{TIP_PERCENT}</Typography>
+                <Typography>{TIPS_PERCENT}</Typography>
               </Grid>
               <Grid item xs={8}>
                 <Input
-                  placeholder={TIP_PERCENT}
+                  placeholder={TIPS_PERCENT}
                   value={tipPercentInput}
                   onChange={handleTipPercentInput}
                   error={isTipPercentInputInvalid}

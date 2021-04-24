@@ -3,8 +3,9 @@ import { BillDataContext } from '../../context/BillDataContext';
 import { Divider } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import FeesItem from './FeesItem';
-import { TAX, TIP, NO_VALUE } from '../shared/constants';
+import { TAX, TIPS, NO_VALUE } from '../shared/constants';
 import ListContainer from '../shared/ListContainer';
+import { formatPrice } from '../shared/utils';
 
 const FeesList = () => {
   const { tipPercent, tax } = useContext(BillDataContext);
@@ -14,15 +15,17 @@ const FeesList = () => {
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <FeesItem
-            title={TIP}
+            title={TIPS}
             value={tipPercent ? `${tipPercent.toString()}%` : NO_VALUE}
+            addDivider
           />
         </Grid>
         <Grid item xs={12}>
-          <Divider />
-        </Grid>
-        <Grid item xs={12}>
-          <FeesItem title={TAX} value={tax > 0 ? tax.toString() : NO_VALUE} />
+          <FeesItem
+            title={TAX}
+            value={tax > 0 ? formatPrice(tax) : NO_VALUE}
+            addDivider={false}
+          />
         </Grid>
       </Grid>
     </ListContainer>

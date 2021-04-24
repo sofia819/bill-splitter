@@ -15,21 +15,25 @@ const AddMealPanel = () => {
   const handleOpenPanel = () => setIsAddPanelOpen((prevState) => !prevState);
   const handleClosePanel = () => setIsAddPanelOpen((prevState) => !prevState);
 
-  const { users, meals, setMeals } = useContext(BillDataContext);
+  const initializeCheckedUsers = (usersList: User[]) => {
+    const initialUsersChecked: { [key: string]: boolean } = {};
+    usersList.forEach((user: User) => {
+      initialUsersChecked[user.id] = false;
+    });
+    return initialUsersChecked;
+  };
+
+  const { users, setMeals } = useContext(BillDataContext);
   const [nameInput, setNameInput] = useState<string>('');
   const [priceInput, setPriceInput] = useState<string>('');
   const [checkedUsersInput, setCheckedUsersInput] = useState<{
     [key: string]: boolean;
-  }>(() => {
-    const initialUsersChecked: { [key: string]: boolean } = {};
-    users.forEach((user) => {
-      initialUsersChecked[user.id] = false;
-    });
-    return initialUsersChecked;
-  });
+  }>(initializeCheckedUsers(users));
 
   useEffect(() => {
     setNameInput('');
+    setPriceInput('');
+    setCheckedUsersInput(initializeCheckedUsers(users));
   }, [isAddPanelOpen]);
 
   const handleNameInput: React.ChangeEventHandler<HTMLInputElement> = (e) =>
