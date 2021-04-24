@@ -23,9 +23,7 @@ const EditMealPanel = (props: EditMealPanelProps) => {
   const currentMeal: Meal = meals.filter((meal) => meal.id === props.id)[0];
 
   const [nameInput, setNameInput] = useState<string>(currentMeal.name);
-  const [priceInput, setPriceInput] = useState<string>(
-    currentMeal.price.toString()
-  );
+  const [priceInput, setPriceInput] = useState<number>(currentMeal.price);
   const [checkedUsersInput, setCheckedUsersInput] = useState<{
     [key: string]: boolean;
   }>(() => {
@@ -41,10 +39,10 @@ const EditMealPanel = (props: EditMealPanelProps) => {
     setNameInput(e.target.value);
 
   const handlePriceInput: React.ChangeEventHandler<HTMLInputElement> = (e) =>
-    setPriceInput(e.target.value);
+    setPriceInput(parseFloat(e.target.value));
 
   const isNameInputInvalid = nameInput === '';
-  const isPriceInputInvalid = nameInput === '' || isNaN(parseFloat(priceInput));
+  const isPriceInputInvalid = priceInput <= 0;
   const isUsersInputInvalid =
     Object.keys(checkedUsersInput).filter((key) => checkedUsersInput[key])
       .length < 1;
@@ -57,7 +55,7 @@ const EditMealPanel = (props: EditMealPanelProps) => {
           {
             id: props.id,
             name: nameInput,
-            price: parseFloat(priceInput),
+            price: priceInput,
             users: users.filter(
               (user) => checkedUsersInput[user.id.toString()]
             ),
@@ -102,6 +100,7 @@ const EditMealPanel = (props: EditMealPanelProps) => {
                   value={priceInput}
                   onChange={handlePriceInput}
                   error={isPriceInputInvalid}
+                  type='number'
                 />
               </Grid>
               <Grid item xs={12}>

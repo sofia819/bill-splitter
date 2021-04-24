@@ -5,19 +5,14 @@ import { RESULTS } from '../shared/constants';
 import CostList from './CostList';
 import PanelHeader from '../shared/PanelHeader';
 import { roundNumber } from '../shared/utils';
+import PanelContainer from '../shared/PanelContainer';
 
 const Results = () => {
   const { users, meals, tipPercent, tax } = useContext(BillDataContext);
-  /**
-   * Round up these numbers to 2 decimal places
-   */
-  const subtotal: number = meals.reduce(
-    (subtotal, currentMeal) => subtotal + currentMeal.price,
-    0
+  const subtotal: number = roundNumber(
+    meals.reduce((subtotal, currentMeal) => subtotal + currentMeal.price, 0)
   );
   const tips: number = roundNumber((subtotal * tipPercent) / 100);
-  const tipsPerUser: number = roundNumber(tips / users.length);
-  const taxPerUser: number = roundNumber(tax / users.length);
   const totalCost: number = roundNumber(subtotal + tips + tax);
   const userCosts: number[] = [];
 
@@ -27,21 +22,25 @@ const Results = () => {
     );
     const userSubtotal = userMeals.reduce(
       (userSubtotal, currentMeal) =>
-        roundNumber(
-          userSubtotal + currentMeal.price / currentMeal.users.length
-        ),
+        userSubtotal + currentMeal.price / currentMeal.users.length,
       0
     );
-    userCosts.push(roundNumber(userSubtotal + tipsPerUser + taxPerUser));
+    const tipsPerUser: number = (tips * userSubtotal) / subtotal;
+    const taxPerUser: number = (tax * userSubtotal) / subtotal;
+    const userCost = roundNumber(userSubtotal + tipsPerUser + taxPerUser);
+    userCosts.push(isNaN(userCost) ? 0 : userCost);
+    console.log(userSubtotal);
+    console.log(tipsPerUser);
+    console.log(taxPerUser);
+    console.log(userCost);
   });
 
-  const totalUserCost = userCosts.reduce(
-    (totalCost, currentCost) => roundNumber(totalCost + currentCost),
-    0
+  const totalUserCost = roundNumber(
+    userCosts.reduce((totalCost, currentCost) => totalCost + currentCost, 0)
   );
 
   return (
-    <>
+    <PanelContainer>
       <PanelHeader title={RESULTS} />
       <UserCostList userCosts={userCosts} />
       <CostList
@@ -51,7 +50,7 @@ const Results = () => {
         totalUserCost={totalUserCost}
         totalCost={totalCost}
       />
-    </>
+    </PanelContainer>
   );
 };
 

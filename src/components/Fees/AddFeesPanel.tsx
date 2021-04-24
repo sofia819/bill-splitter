@@ -23,30 +23,29 @@ const AddFeesPanel = () => {
   const { tipPercent, setTipPercent, tax, setTax } = useContext(
     BillDataContext
   );
-  const [tipPercentInput, setTipPercentInput] = useState<string>('');
-  const [taxInput, setTaxInput] = useState<string>('');
+  const [tipPercentInput, setTipPercentInput] = useState<number>(tipPercent);
+  const [taxInput, setTaxInput] = useState<number>(tax);
 
   useEffect(() => {
-    setTipPercentInput(tipPercent.toString());
-    setTaxInput(tax.toString());
+    setTipPercentInput(tipPercent);
+    setTaxInput(tax);
   }, [tipPercent, tax, isAddPanelOpen]);
 
   const handleTipPercentInput: React.ChangeEventHandler<HTMLInputElement> = (
     e
-  ) => setTipPercentInput(e.target.value);
+  ) => setTipPercentInput(parseFloat(e.target.value));
 
   const handleTaxInput: React.ChangeEventHandler<HTMLInputElement> = (e) =>
-    setTaxInput(e.target.value);
+    setTaxInput(parseFloat(e.target.value));
 
-  const isTipPercentInputInvalid =
-    tipPercentInput === '' || isNaN(parseFloat(tipPercentInput));
+  const isTipPercentInputInvalid = tipPercentInput <= 0;
 
-  const isTaxInputInvalid = taxInput === '' || isNaN(parseFloat(taxInput));
+  const isTaxInputInvalid = taxInput <= 0;
 
   const handleSave = () => {
     if (!isTipPercentInputInvalid && !isTaxInputInvalid) {
-      setTipPercent(parseFloat(tipPercentInput));
-      setTax(parseFloat(taxInput));
+      setTipPercent(tipPercentInput);
+      setTax(taxInput);
       handleClosePanel();
     }
   };
@@ -74,6 +73,7 @@ const AddFeesPanel = () => {
                   value={tipPercentInput}
                   onChange={handleTipPercentInput}
                   error={isTipPercentInputInvalid}
+                  type='number'
                 />
               </Grid>
               <Grid item xs={4}>
@@ -85,6 +85,7 @@ const AddFeesPanel = () => {
                   value={taxInput}
                   onChange={handleTaxInput}
                   error={isTaxInputInvalid}
+                  type='number'
                 />
               </Grid>
             </Grid>

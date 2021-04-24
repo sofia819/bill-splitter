@@ -1,4 +1,4 @@
-import { Typography, Button } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 
 type UserProps = {
   name: string;

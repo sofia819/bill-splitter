@@ -25,25 +25,25 @@ const AddMealPanel = () => {
 
   const { users, setMeals } = useContext(BillDataContext);
   const [nameInput, setNameInput] = useState<string>('');
-  const [priceInput, setPriceInput] = useState<string>('');
+  const [priceInput, setPriceInput] = useState<number>(0);
   const [checkedUsersInput, setCheckedUsersInput] = useState<{
     [key: string]: boolean;
   }>(initializeCheckedUsers(users));
 
   useEffect(() => {
     setNameInput('');
-    setPriceInput('');
+    setPriceInput(0);
     setCheckedUsersInput(initializeCheckedUsers(users));
-  }, [isAddPanelOpen]);
+  }, [isAddPanelOpen, users]);
 
   const handleNameInput: React.ChangeEventHandler<HTMLInputElement> = (e) =>
     setNameInput(e.target.value);
 
   const handlePriceInput: React.ChangeEventHandler<HTMLInputElement> = (e) =>
-    setPriceInput(e.target.value);
+    setPriceInput(parseFloat(e.target.value));
 
   const isNameInputInvalid = nameInput === '';
-  const isPriceInputInvalid = nameInput === '' || isNaN(parseFloat(priceInput));
+  const isPriceInputInvalid = priceInput <= 0;
   const isUsersInputInvalid =
     Object.keys(checkedUsersInput).filter((key) => checkedUsersInput[key])
       .length < 1;
@@ -56,7 +56,7 @@ const AddMealPanel = () => {
           {
             id: prevState.length,
             name: nameInput,
-            price: parseFloat(priceInput),
+            price: priceInput,
             users: users.filter(
               (user) => checkedUsersInput[user.id.toString()]
             ),
@@ -101,6 +101,7 @@ const AddMealPanel = () => {
                   value={priceInput}
                   onChange={handlePriceInput}
                   error={isPriceInputInvalid}
+                  type='number'
                 />
               </Grid>
               <Grid item xs={12}>
