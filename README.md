@@ -25,10 +25,20 @@
 
 - The app is available here: https://bill-price-splitter.herokuapp.com/.
 
-### Adding People
+### Adding Users
 
 - Click on the `Add User` button and a modal will open, allowing the user to input information for a user.
 - The user must enter a name to add a new user.
+
+### Editing Users
+
+- Click on the `Edit` button next to the user that you would like to edit.
+- The user must enter a name to edit..
+
+### Removing Users
+
+- Click on the `Del` button next to the user that you would like to remove.
+- A user cannot be deleted if he or she has one or more meals.
 
 ### Adding Meals
 
