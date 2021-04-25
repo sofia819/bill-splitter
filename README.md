@@ -36,8 +36,8 @@
 
 #### Editing Users
 
-- Click on the `Edit` button next to the user that you would like to edit.
-- The user must enter a name to edit..
+- Click on the `Edit` button next to the user that you would like to edit and a modal will open, allowing the user to change the information.
+- The user must enter a name to save.
 
 #### Removing Users
 
@@ -51,13 +51,13 @@
 #### Adding Meals
 
 - Click on the `Add Meal` button and a modal will open, allowing the user to input information for a meal.
-- The user must enter a name, a price, and select at least one user who has consumed the meal.
+- The user must enter a name, a price, and select at least one user who has consumed the meal to add a new meal.
 - You must have at least one user in the user list to add a meal.
 
 #### Editing Meals
 
-- Click on the `Edit` button next to the meal that you would like to edit.
-- The user must enter a name, a price, and select at least one user who has consumed the meal.
+- Click on the `Edit` button next to the meal that you would like to edit and a modal will open, allowing the user to change the information.
+- The user must enter a name, a price, and select at least one user who has consumed the meal to save.
 
 #### Removing Meals
 
@@ -67,9 +67,9 @@
 
 ---
 
-#### Adding Tax and Tips
+#### Editing Tax and Tips
 
-- Click on `Edit Tax & Tips` to input the tip percentage and tax included in the bill.
+- Click on `Edit Tax & Tips` and a modal will open, allowing the user to input the tip percentage and tax included in the bill.
 
 ### Results
 
