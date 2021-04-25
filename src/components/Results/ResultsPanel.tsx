@@ -1,16 +1,20 @@
 import { useContext } from 'react';
-import { BillDataContext } from '../../context/BillDataContext';
-import UserCostList from './UserCostList';
-import { RESULTS } from '../shared/constants';
-import CostList from './CostList';
-import PanelHeader from '../shared/PanelHeader';
-import { roundNumber } from '../shared/utils';
-import PanelContainer from '../shared/PanelContainer';
+import { BillDataContext } from 'context/BillDataContext';
+import UserCostList from 'components/Results/UserCostList';
+import { RESULTS } from 'shared/constants';
+import CostList from 'components/Results/CostList';
+import PanelHeader from 'shared/PanelHeader';
+import { roundNumber } from 'shared/utils';
+import PanelContainer from 'shared/PanelContainer';
 
 const Results = () => {
   const { users, meals, tipPercent, tax } = useContext(BillDataContext);
   const subtotal: number = roundNumber(
-    meals.reduce((subtotal, currentMeal) => subtotal + currentMeal.price, 0)
+    meals.reduce(
+      (subtotal, currentMeal) =>
+        subtotal + currentMeal.price * currentMeal.quantity,
+      0
+    )
   );
   const tips: number = roundNumber((subtotal * tipPercent) / 100);
   const totalCost: number = roundNumber(subtotal + tips + tax);
@@ -22,7 +26,8 @@ const Results = () => {
     );
     const userSubtotal = userMeals.reduce(
       (userSubtotal, currentMeal) =>
-        userSubtotal + currentMeal.price / currentMeal.users.length,
+        userSubtotal +
+        (currentMeal.price * currentMeal.quantity) / currentMeal.users.length,
       0
     );
     const tipsPerUser: number = (tips * userSubtotal) / subtotal;

@@ -1,6 +1,6 @@
 import { Button, Typography, Box } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
-import { SWITCH_THEME, BILL_SPLITTER } from '../shared/constants';
+import { SWITCH_THEME, BILL_SPLITTER } from 'shared/constants';
 
 type AppHeaderProps = {
   setSelectedTheme: (

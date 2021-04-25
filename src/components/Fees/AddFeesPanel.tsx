@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { BillDataContext } from '../../context/BillDataContext';
+import { BillDataContext } from 'context/BillDataContext';
 import { Input, Button, Typography, Box } from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -12,7 +12,7 @@ import {
   CANCEL,
   TAX,
   TIPS_PERCENT,
-} from '../shared/constants';
+} from 'shared/constants';
 
 const AddFeesPanel = () => {
   const [isAddPanelOpen, setIsAddPanelOpen] = useState(false);

@@ -1,7 +1,7 @@
 import { Button } from '@material-ui/core';
-import { DELETE } from '../shared/constants';
+import { DELETE } from 'shared/constants';
 import { useContext } from 'react';
-import { BillDataContext, User, Meal } from '../../context/BillDataContext';
+import { BillDataContext, User, Meal } from 'context/BillDataContext';
 
 type DeleteUserButtonProps = {
   id: number;

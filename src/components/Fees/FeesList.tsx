@@ -1,10 +1,10 @@
 import { useContext } from 'react';
-import { BillDataContext } from '../../context/BillDataContext';
+import { BillDataContext } from 'context/BillDataContext';
 import Grid from '@material-ui/core/Grid';
 import FeesItem from './FeesItem';
-import { TAX, TIPS, NO_VALUE } from '../shared/constants';
-import ListContainer from '../shared/ListContainer';
-import { formatPrice } from '../shared/utils';
+import { TAX, TIPS, NO_VALUE } from 'shared/constants';
+import ListContainer from 'shared/ListContainer';
+import { formatPrice } from 'shared/utils';
 
 const FeesList = () => {
   const { tipPercent, tax } = useContext(BillDataContext);

@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import { BillDataContext } from '../../context/BillDataContext';
+import { BillDataContext } from 'context/BillDataContext';
 import Grid from '@material-ui/core/Grid';
-import UserItem from './UserItem';
-import ListContainer from '../shared/ListContainer';
+import UserItem from 'components/User/UserItem';
+import ListContainer from 'shared/ListContainer';
 
 const UserList = () => {
   const { users } = useContext(BillDataContext);

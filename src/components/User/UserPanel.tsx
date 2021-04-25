@@ -1,8 +1,8 @@
-import AddUserPanel from './AddUserPanel';
-import UserList from './UserList';
-import PanelHeader from '../shared/PanelHeader';
-import { USERS } from '../shared/constants';
-import PanelContainer from '../shared/PanelContainer';
+import AddUserPanel from 'components/User/AddUserPanel';
+import UserList from 'components/User/UserList';
+import PanelHeader from 'shared/PanelHeader';
+import { USERS } from 'shared/constants';
+import PanelContainer from 'shared/PanelContainer';
 
 const UserPanel = () => {
   return (

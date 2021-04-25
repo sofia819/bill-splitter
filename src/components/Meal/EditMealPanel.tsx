@@ -1,11 +1,11 @@
-import { EDIT, NAME, PRICE, CANCEL, SAVE } from '../shared/constants';
+import { EDIT, NAME, PRICE, CANCEL, SAVE, QUANTIY } from 'shared/constants';
 import { Typography, Button, Box, Input } from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { useContext, useState } from 'react';
-import { BillDataContext, Meal, User } from '../../context/BillDataContext';
+import { BillDataContext, Meal, User } from 'context/BillDataContext';
 import Grid from '@material-ui/core/Grid';
 import MealUsersCheckbox from './MealUsersCheckbox';
 
@@ -24,6 +24,9 @@ const EditMealPanel = (props: EditMealPanelProps) => {
 
   const [nameInput, setNameInput] = useState<string>(currentMeal.name);
   const [priceInput, setPriceInput] = useState<number>(currentMeal.price);
+  const [quantityInput, setQuantityInput] = useState<number>(
+    currentMeal.quantity
+  );
   const [checkedUsersInput, setCheckedUsersInput] = useState<{
     [key: string]: boolean;
   }>(() => {
@@ -41,8 +44,12 @@ const EditMealPanel = (props: EditMealPanelProps) => {
   const handlePriceInput: React.ChangeEventHandler<HTMLInputElement> = (e) =>
     setPriceInput(parseFloat(e.target.value));
 
+  const handleQuantityInput: React.ChangeEventHandler<HTMLInputElement> = (e) =>
+    setQuantityInput(parseInt(e.target.value));
+
   const isNameInputInvalid = nameInput === '';
-  const isPriceInputInvalid = priceInput <= 0;
+  const isPriceInputInvalid = isNaN(priceInput) || priceInput <= 0;
+  const isQuantityInputInvalid = isNaN(quantityInput) || quantityInput <= 0;
   const isUsersInputInvalid =
     Object.keys(checkedUsersInput).filter((key) => checkedUsersInput[key])
       .length < 1;
@@ -59,6 +66,7 @@ const EditMealPanel = (props: EditMealPanelProps) => {
             id: props.id,
             name: nameInput,
             price: priceInput,
+            quantity: quantityInput,
             users: users.filter(
               (user) => checkedUsersInput[user.id.toString()]
             ),
@@ -104,6 +112,18 @@ const EditMealPanel = (props: EditMealPanelProps) => {
                   value={priceInput}
                   onChange={handlePriceInput}
                   error={isPriceInputInvalid}
+                  type='number'
+                />
+              </Grid>
+              <Grid item xs={4}>
+                <Typography>{QUANTIY}</Typography>
+              </Grid>
+              <Grid item xs={8}>
+                <Input
+                  placeholder={QUANTIY}
+                  value={quantityInput}
+                  onChange={handleQuantityInput}
+                  error={isQuantityInputInvalid}
                   type='number'
                 />
               </Grid>

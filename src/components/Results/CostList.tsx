@@ -1,12 +1,6 @@
-import ItemCost from '../shared/ItemCost';
-import ListContainer from '../shared/ListContainer';
-import {
-  SUBTOTAL,
-  TOTAL,
-  TIPS,
-  TAX,
-  TOTAL_USER_COSTS,
-} from '../shared/constants';
+import ItemCost from 'shared/ItemCost';
+import ListContainer from 'shared/ListContainer';
+import { SUBTOTAL, TOTAL, TIPS, TAX, TOTAL_USER_COSTS } from 'shared/constants';
 
 type CostListProps = {
   subtotal: number;

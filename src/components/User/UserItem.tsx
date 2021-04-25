@@ -1,7 +1,7 @@
 import { Typography, Divider } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
-import EditUserPanel from './EditUserPanel';
-import DeleteUserButton from './DeleteUserButton';
+import EditUserPanel from 'components/User/EditUserPanel';
+import DeleteUserButton from 'components/User/DeleteUserButton';
 
 type UserProps = {
   id: number;

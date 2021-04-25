@@ -1,5 +1,5 @@
-import FeesItem from '../Fees/FeesItem';
-import { formatPrice } from '../shared/utils';
+import FeesItem from '../components/Fees/FeesItem';
+import { formatPrice } from './utils';
 
 type ItemCostProps = {
   itemName: string;

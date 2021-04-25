@@ -1,12 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { BillDataContext, User } from '../../context/BillDataContext';
+import { BillDataContext, User } from 'context/BillDataContext';
 import { Input, Button, Typography, Box } from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Grid from '@material-ui/core/Grid';
-import { EDIT, SAVE, CANCEL, NAME } from '../shared/constants';
+import { EDIT, SAVE, CANCEL, NAME } from 'shared/constants';
 
 type EditUserPanelProps = {
   id: number;

@@ -1,13 +1,20 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { BillDataContext, Meal, User } from '../../context/BillDataContext';
+import { BillDataContext, Meal, User } from 'context/BillDataContext';
 import { Input, Button, Typography, Box } from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Grid from '@material-ui/core/Grid';
-import { ADD_MEAL_TEXT, SAVE, CANCEL, NAME, PRICE } from '../shared/constants';
-import MealUsersCheckbox from './MealUsersCheckbox';
+import {
+  ADD_MEAL_TEXT,
+  SAVE,
+  CANCEL,
+  NAME,
+  PRICE,
+  QUANTIY,
+} from 'shared/constants';
+import MealUsersCheckbox from 'components/Meal/MealUsersCheckbox';
 
 const AddMealPanel = () => {
   const [isAddPanelOpen, setIsAddPanelOpen] = useState(false);
@@ -26,6 +33,7 @@ const AddMealPanel = () => {
   const { users, setMeals } = useContext(BillDataContext);
   const [nameInput, setNameInput] = useState<string>('');
   const [priceInput, setPriceInput] = useState<number>(0);
+  const [quantityInput, setQuantityInput] = useState<number>(1);
   const [checkedUsersInput, setCheckedUsersInput] = useState<{
     [key: string]: boolean;
   }>(initializeCheckedUsers(users));
@@ -33,6 +41,7 @@ const AddMealPanel = () => {
   useEffect(() => {
     setNameInput('');
     setPriceInput(0);
+    setQuantityInput(1);
     setCheckedUsersInput(initializeCheckedUsers(users));
   }, [isAddPanelOpen, users]);
 
@@ -42,8 +51,12 @@ const AddMealPanel = () => {
   const handlePriceInput: React.ChangeEventHandler<HTMLInputElement> = (e) =>
     setPriceInput(parseFloat(e.target.value));
 
+  const handleQuantityInput: React.ChangeEventHandler<HTMLInputElement> = (e) =>
+    setQuantityInput(parseInt(e.target.value));
+
   const isNameInputInvalid = nameInput === '';
-  const isPriceInputInvalid = priceInput <= 0;
+  const isPriceInputInvalid = isNaN(priceInput) || priceInput <= 0;
+  const isQuantityInputInvalid = isNaN(quantityInput) || quantityInput <= 0;
   const isUsersInputInvalid =
     Object.keys(checkedUsersInput).filter((key) => checkedUsersInput[key])
       .length < 1;
@@ -57,6 +70,7 @@ const AddMealPanel = () => {
             id: prevState.length,
             name: nameInput,
             price: priceInput,
+            quantity: quantityInput,
             users: users.filter(
               (user) => checkedUsersInput[user.id.toString()]
             ),
@@ -66,6 +80,8 @@ const AddMealPanel = () => {
       handleClosePanel();
     }
   };
+
+  console.log(isQuantityInputInvalid);
 
   return (
     <>
@@ -106,6 +122,18 @@ const AddMealPanel = () => {
                   value={priceInput}
                   onChange={handlePriceInput}
                   error={isPriceInputInvalid}
+                  type='number'
+                />
+              </Grid>
+              <Grid item xs={4}>
+                <Typography>{QUANTIY}</Typography>
+              </Grid>
+              <Grid item xs={8}>
+                <Input
+                  placeholder={QUANTIY}
+                  value={quantityInput}
+                  onChange={handleQuantityInput}
+                  error={isQuantityInputInvalid}
                   type='number'
                 />
               </Grid>

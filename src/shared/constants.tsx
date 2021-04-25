@@ -20,7 +20,7 @@ export const ADD_MEAL_TEXT = 'Add Meal';
 
 export const NAME = 'Name';
 
-export const PRICE = 'Price';
+export const PRICE = 'Price (per unit)';
 
 export const USERS_CHECKBOX = 'Whose is this?';
 
@@ -45,3 +45,5 @@ export const FEES = 'Fees';
 export const DELETE = 'DEL';
 
 export const SWITCH_THEME = 'Switch Theme';
+
+export const QUANTIY = 'Quantity';

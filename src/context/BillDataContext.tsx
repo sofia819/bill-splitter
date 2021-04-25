@@ -10,6 +10,7 @@ export type Meal = {
   id: number;
   name: string;
   price: number;
+  quantity: number;
   users: User[];
 };
 

@@ -1,7 +1,7 @@
-import ItemCost from '../shared/ItemCost';
+import ItemCost from 'shared/ItemCost';
 import Grid from '@material-ui/core/Grid';
-import ListContainer from '../shared/ListContainer';
-import { BillDataContext } from '../../context/BillDataContext';
+import ListContainer from 'shared/ListContainer';
+import { BillDataContext } from 'context/BillDataContext';
 import { useContext } from 'react';
 
 type UserCostListProps = {
