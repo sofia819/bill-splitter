@@ -25,39 +25,55 @@
 
 - The app is available here: https://bill-price-splitter.herokuapp.com/.
 
-### Adding Users
+### Users
+
+---
+
+#### Adding Users
 
 - Click on the `Add User` button and a modal will open, allowing the user to input information for a user.
 - The user must enter a name to add a new user.
 
-### Editing Users
+#### Editing Users
 
 - Click on the `Edit` button next to the user that you would like to edit.
 - The user must enter a name to edit..
 
-### Removing Users
+#### Removing Users
 
 - Click on the `Del` button next to the user that you would like to remove.
 - A user cannot be deleted if he or she has one or more meals.
 
-### Adding Meals
+### Meals
+
+---
+
+#### Adding Meals
 
 - Click on the `Add Meal` button and a modal will open, allowing the user to input information for a meal.
 - The user must enter a name, a price, and select at least one user who has consumed the meal.
 - You must have at least one user in the user list to add a meal.
 
-### Editing Meals
+#### Editing Meals
 
 - Click on the `Edit` button next to the meal that you would like to edit.
 - The user must enter a name, a price, and select at least one user who has consumed the meal.
 
-### Removing Meals
+#### Removing Meals
 
 - Click on the `Del` button next to the meal that you would like to remove.
 
-### Adding Tax and Tips
+### Fees
+
+---
+
+#### Adding Tax and Tips
 
 - Click on `Edit Tax & Tips` to input the tip percentage and tax included in the bill.
+
+### Results
+
+---
 
 ### Viewing Results
 
