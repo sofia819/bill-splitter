@@ -29,10 +29,6 @@ const Results = () => {
     const taxPerUser: number = (tax * userSubtotal) / subtotal;
     const userCost = roundNumber(userSubtotal + tipsPerUser + taxPerUser);
     userCosts.push(isNaN(userCost) ? 0 : userCost);
-    console.log(userSubtotal);
-    console.log(tipsPerUser);
-    console.log(taxPerUser);
-    console.log(userCost);
   });
 
   const totalUserCost = roundNumber(
