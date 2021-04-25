@@ -25,7 +25,7 @@ const EditUserPanel = (props: EditUserPanelProps) => {
 
   useEffect(() => {
     setNameInput(currentUser.name);
-  }, [isAddPanelOpen]);
+  }, [isAddPanelOpen, currentUser.name]);
 
   const handleNameInput: React.ChangeEventHandler<HTMLInputElement> = (e) =>
     setNameInput(e.target.value);
