@@ -1,5 +1,7 @@
 # Bill Splitter
 
+<img src="./public/app.png" height="400" alt="app screenshot">
+
 ## Background
 
 ---
