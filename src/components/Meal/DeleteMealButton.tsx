@@ -10,14 +10,14 @@ type DeleteMealButtonProps = {
 const DeleteMealButton = (props: DeleteMealButtonProps) => {
   const { setMeals } = useContext(BillDataContext);
 
-  const handleDeleteUser = () => {
+  const handleDeleteMeal = () => {
     setMeals((prevState: Meal[]) => {
       return prevState.filter((meal) => meal.id !== props.id);
     });
   };
 
   return (
-    <Button variant='contained' color='secondary' onClick={handleDeleteUser}>
+    <Button variant='contained' color='secondary' onClick={handleDeleteMeal}>
       {DELETE}
     </Button>
   );

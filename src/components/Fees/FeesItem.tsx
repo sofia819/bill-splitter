@@ -10,10 +10,10 @@ type FeesProps = {
 const FeesItem = (props: FeesProps) => {
   return (
     <Grid container spacing={2}>
-      <Grid item xs={6}>
+      <Grid item xs={6} container justify='center'>
         <Typography>{props.title}</Typography>
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={6} container justify='center'>
         <Typography>{props.value}</Typography>
       </Grid>
       {props.addDivider && (

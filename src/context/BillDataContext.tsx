@@ -1,4 +1,5 @@
 import { useState, createContext } from 'react';
+import { Box } from '@material-ui/core';
 
 export type User = {
   id: number;
@@ -57,7 +58,7 @@ export const BillDataProvider = ({ children }: Props) => {
         setTax: setRecordedTax,
       }}
     >
-      {children}
+      <Box p={2}>{children}</Box>
     </BillDataContext.Provider>
   );
 };

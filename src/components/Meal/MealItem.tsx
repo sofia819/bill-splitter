@@ -19,10 +19,10 @@ const MealItem = (props: MealProps) => (
       <Grid item xs={6}>
         <ItemCost itemName={props.name} cost={props.price} addDivider={false} />
       </Grid>
-      <Grid item xs>
+      <Grid item xs container justify='center'>
         <EditMealPanel id={props.id} />
       </Grid>
-      <Grid item xs>
+      <Grid item xs container justify='center'>
         <DeleteMealButton id={props.id} />
       </Grid>
       {props.addDivider && (

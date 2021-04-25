@@ -69,7 +69,12 @@ const AddMealPanel = () => {
 
   return (
     <>
-      <Button variant='contained' color='primary' onClick={handleOpenPanel}>
+      <Button
+        variant='contained'
+        color='primary'
+        onClick={handleOpenPanel}
+        disabled={users.length < 1}
+      >
         {ADD_MEAL_TEXT}
       </Button>
       <Dialog

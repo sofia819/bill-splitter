@@ -1,3 +1,5 @@
+export const BILL_SPLITTER = 'Bill Splitter';
+
 export const EDIT_FEES_TEXT = 'Edit Tax & Tips';
 
 export const SAVE = 'Save';
@@ -41,3 +43,5 @@ export const TOTAL_USER_COSTS = 'Total User Cost';
 export const FEES = 'Fees';
 
 export const DELETE = 'DEL';
+
+export const SWITCH_THEME = 'Switch Theme';
