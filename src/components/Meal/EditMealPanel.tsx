@@ -50,8 +50,11 @@ const EditMealPanel = (props: EditMealPanelProps) => {
   const handleSave = () => {
     if (!isNameInputInvalid && !isPriceInputInvalid && !isUsersInputInvalid) {
       setMeals((prevState: Meal[]) => {
+        const indexOfEditedMeal = prevState.findIndex(
+          (meal) => meal.id === props.id
+        );
         return [
-          ...prevState.filter((meal) => meal.id !== props.id),
+          ...prevState.slice(0, indexOfEditedMeal),
           {
             id: props.id,
             name: nameInput,
@@ -60,6 +63,7 @@ const EditMealPanel = (props: EditMealPanelProps) => {
               (user) => checkedUsersInput[user.id.toString()]
             ),
           },
+          ...prevState.slice(indexOfEditedMeal + 1),
         ];
       });
       handleClosePanel();

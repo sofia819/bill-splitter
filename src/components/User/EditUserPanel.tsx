@@ -35,12 +35,16 @@ const EditUserPanel = (props: EditUserPanelProps) => {
   const handleSave = () => {
     if (!isNameInputInvalid) {
       setUsers((prevState: User[]) => {
+        const indexOfEditedUser = prevState.findIndex(
+          (user) => user.id === props.id
+        );
         return [
-          ...prevState.filter((user) => user.id !== props.id),
+          ...prevState.slice(0, indexOfEditedUser),
           {
             id: props.id,
             name: nameInput,
           },
+          ...prevState.slice(indexOfEditedUser + 1),
         ];
       });
       handleClosePanel();
