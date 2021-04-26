@@ -81,8 +81,6 @@ const AddMealPanel = () => {
     }
   };
 
-  console.log(isQuantityInputInvalid);
-
   return (
     <>
       <Button
