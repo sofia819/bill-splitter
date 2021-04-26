@@ -53,13 +53,13 @@
 #### Adding Meals
 
 - Click on the `Add Meal` button and a modal will open, allowing the user to input information for a meal.
-- The user must enter a name, a price, and select at least one user who has consumed the meal to add a new meal.
+- The user must enter a name, a price, a quantity of at least 1, and select at least one user who has consumed the meal to add a new meal.
 - You must have at least one user in the user list to add a meal.
 
 #### Editing Meals
 
 - Click on the `Edit` button next to the meal that you would like to edit and a modal will open, allowing the user to change the information.
-- The user must enter a name, a price, and select at least one user who has consumed the meal to save.
+- The user must enter a name, a price, a quantity of at least 1, and select at least one user who has consumed the meal to save.
 
 #### Removing Meals
 
